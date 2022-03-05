@@ -1,0 +1,23 @@
+
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-areas: "header" "content" "footer";
+  grid-template-rows: 5rem 1fr 5rem;
+  justify-items: center;
+  .header {
+    grid-area: header;
+    align-self: center;
+    padding: 0.5rem;
+  }
+  .content-wrapper {
+    grid-area: content;
+    overflow: hidden;
+  }
+  .footer {
+    grid-area: footer;
+    align-self: center;
+    padding: 0.5rem;
+  }
+}
