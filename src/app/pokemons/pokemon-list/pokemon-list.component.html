@@ -1,16 +1,12 @@
-<section class="wrapper">
-  <app-pokemon></app-pokemon>
-  <app-pokemon></app-pokemon>
-  <app-pokemon></app-pokemon>
-  <app-pokemon></app-pokemon>
-  <app-pokemon></app-pokemon>
-  <app-pokemon></app-pokemon>
-  <app-pokemon></app-pokemon>
-  <app-pokemon></app-pokemon>
-  <app-pokemon></app-pokemon>
-  <app-pokemon></app-pokemon>
-  <app-pokemon></app-pokemon>
-  <app-pokemon></app-pokemon>
-  <app-pokemon></app-pokemon>
-  <app-pokemon></app-pokemon>
-</section>
+<ng-container *ngIf="pokemons$ | async as pokemons; else loading">
+  <section class="wrapper">
+    <div *ngFor="let pokemon of pokemons.data">
+      <app-pokemon [data]="pokemon"></app-pokemon>
+    </div>
+  </section>
+</ng-container>
+<ng-template #loading>
+  <div class="loading">
+    <img src="../../../assets/images/loading.gif" alt="" />
+  </div>
+</ng-template>

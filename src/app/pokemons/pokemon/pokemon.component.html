@@ -1,3 +1,12 @@
-<div class="card">
-  pokesmon
+<div class="card" (click)="searchPokemon(data.id)">
+  <img src="{{ data.images.small }}" alt="" />
+  <div class="card-info">
+    <p>{{ data.name }}</p>
+    <p>{{ data.id }}</p>
+    <ul>
+      <li *ngFor="let type of data.types">
+        {{ type }}
+      </li>
+    </ul>
+  </div>
 </div>

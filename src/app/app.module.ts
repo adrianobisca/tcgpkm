@@ -1,28 +1,27 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { PokemonComponent } from './pokemons/pokemon/pokemon.component';
-import { PokemonListComponent } from './pokemons/pokemon-list/pokemon-list.component';
-import { PokemonDetailComponent } from './pokemons/pokemon-detail/pokemon-detail.component';
-import { FooterComponent } from './core/components/footer/footer.component';
-import { HeaderComponent } from './core/components/header/header.component';
+import { AppRoutingModule } from '@app/app-routing.module';
+import { AppComponent } from '@app/app.component';
+import { CoreModule } from '@core/core.module';
+import { PokemonsModule } from '@pokemons/pokemons.module';
+import { InterceptorsModule } from '@shared/interceptors/interceptors.module';
+import { PokemonDataService } from '@shared/services/pokemon-data.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PokemonComponent,
-    PokemonListComponent,
-    PokemonDetailComponent,
-    FooterComponent,
-    HeaderComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    PokemonsModule,
+    CoreModule,
+    InterceptorsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [PokemonDataService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
