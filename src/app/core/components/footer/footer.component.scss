@@ -1,5 +1,13 @@
+@import "./src/assets/style/colors";
+
 .footer {
   padding: 0.5rem;
   display: flex;
   justify-content: center;
+  align-items: center;
+  background-color: $fourth-color;
+  min-height: 5rem;
+  p {
+    font-size: 1rem;
+  }
 }

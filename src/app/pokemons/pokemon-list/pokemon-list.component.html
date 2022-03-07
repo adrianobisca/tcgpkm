@@ -1,4 +1,4 @@
-<ng-container *ngIf="pokemons$ | async as pokemons; else loading">
+<ng-container *ngIf="pokemons$ | async as pokemons">
   <section class="wrapper">
     <div *ngFor="let pokemon of pokemons.data">
       <app-pokemon [data]="pokemon"></app-pokemon>

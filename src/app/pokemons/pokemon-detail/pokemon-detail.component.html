@@ -1,1 +1,46 @@
-<p>pokemon-detail works!</p>
+<ng-container *ngIf="pokemonDetail$ | async as details">
+  <section class="wrapper">
+    <div class="image">
+      <img src="{{ details.images.large }}" alt="" />
+    </div>
+    <div class="name">
+      <p>{{ details.name }}</p>
+      <p>id: {{ details.id }}</p>
+    </div>
+    <div class="types">
+      <p>Type(s)</p>
+      <ul>
+        <li *ngFor="let type of details.types">
+          {{ type }}
+        </li>
+      </ul>
+    </div>
+    <div class="weaknesses">
+      <p>Weaknesse(s)</p>
+      <ul>
+        <li *ngFor="let weakness of details.weaknesses">
+          {{ weakness.type }}
+        </li>
+      </ul>
+    </div>
+    <div class="resistances">
+      <p>Resistance(s)</p>
+      <ul>
+        <li *ngFor="let resistance of details.resistances">
+          {{ resistance.type }}
+        </li>
+      </ul>
+    </div>
+    <div class="attacks">
+      <p>Attack(s)</p>
+      <ul>
+        <li *ngFor="let attack of details.attacks">
+          {{ attack.name }}
+        </li>
+      </ul>
+    </div>
+    <div class="back-button">
+      <button (click)="returnToHome()">return</button>
+    </div>
+  </section>
+</ng-container>

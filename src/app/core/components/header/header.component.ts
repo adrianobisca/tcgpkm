@@ -1,6 +1,7 @@
 import { PokemonDataService } from '@shared/services/pokemon-data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router, RouterState } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,12 +15,19 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private pokemonDataService: PokemonDataService
+    private pokemonDataService: PokemonDataService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
 
   onSubmit() {
+    const isAtListPage = this.router.url.includes('list');
+
+    if (!isAtListPage) {
+      this.router.navigate([`/pokemon-list`]);
+    }
+
     const str = this.searchForm.value.pokemonName;
     this.pokemonDataService.getPokemonList('50', 'name', str);
     this.searchForm.reset();

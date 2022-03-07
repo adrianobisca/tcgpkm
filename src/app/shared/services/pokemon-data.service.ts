@@ -20,30 +20,25 @@ export class PokemonDataService {
 
   getPokemonList(pageSize: string, orderType: string, name?: string) {
     const url = this.assembleUrl('cards', pageSize, orderType, name);
-
-    return this.httpClient
+    this.httpClient
       .get(url)
       .pipe(
         tap(console.log),
         map((pokemons) => this.pokemonList.next(pokemons)),
-        shareReplay()
-      )
-      .subscribe()
-      .unsubscribe();
+        shareReplay(1)
+      ).subscribe();
   }
 
   getPokemon(pokemonId: string) {
     const url = this.assembleUrl('cards/' + pokemonId);
 
-    return this.httpClient
+    this.httpClient
       .get(url)
       .pipe(
         tap(console.log),
-        map((pokemon) => this.pokemonDetail.next(pokemon)),
-        shareReplay()
-      )
-      .subscribe()
-      .unsubscribe();
+        map((pokemon) => this.pokemonDetail.next(pokemon.data)),
+        shareReplay(1)
+      ).subscribe();
   }
 
   assembleUrl(endpoint: string, page?: string, order?: string, name?: string) {

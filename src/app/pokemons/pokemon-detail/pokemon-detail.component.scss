@@ -1,0 +1,54 @@
+@import "./src/assets/style/colors";
+@import "./src/assets/style/fonts";
+
+.wrapper {
+  border: solid 0.25rem $third-color;
+  border-radius: 1.5rem;
+  background-color: $secondary-color;
+  display: grid;
+  grid-template-columns: 40% 1fr 1fr 1fr;
+  grid-template-rows: 40% 1fr 2fr;
+  grid-template-areas:
+    "img nam nam nam"
+    "img typ wea res"
+    "img atk atk btn";
+  margin-top: 2rem;
+  & div {
+    padding: 1rem;
+    & ul {
+      margin-top: 1rem;
+    }
+  }
+  .image {
+    grid-area: img;
+    img {
+      width: fill;
+      width: -webkit-fill-available;
+    }
+  }
+  .name {
+    grid-area: nam;
+    align-self: center;
+    & p:first-of-type{
+      font-size: 4rem;
+    }
+  }
+  .types {
+    grid-area: typ;
+  }
+  .weaknesses {
+    grid-area: wea;
+  }
+  .resistances {
+    grid-area: res;
+  }
+  .attacks {
+    grid-area: atk;
+  }
+  .back-button{
+    grid-area: btn;
+    align-self: end;
+    justify-self: end;
+
+  }
+}

@@ -1,2 +1,38 @@
-@import url(./assets/style/_reset.scss);
+@import "./assets/style/reset";
+@import "./assets/style/colors";
+@import "./assets/style/fonts";
 
+body {
+  background-color: $first-color;
+}
+
+h1 {
+  font-size: 2rem;
+  font-family: $permanent-marker;
+}
+
+p {
+  font-size: 2rem;
+  font-family: $permanent-marker;
+}
+
+ul {
+  li {
+    font-size: 1rem;
+    font-family: $permanent-marker;
+    list-style: square;
+    list-style-position: inside;
+  }
+}
+
+button{
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  min-width: 10rem;
+  font-family: $chakra-petch;
+  cursor: pointer;
+}
+
+input{
+  padding: 0.5rem;
+}

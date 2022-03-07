@@ -1,8 +1,9 @@
 <header class="header">
-  <h1>Pokemon TCG - gotta get them all!</h1>
+  <h1>Gotta catch 'em all!</h1>
   <div class="search-field">
     <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-      <input type="text" formControlName="pokemonName" />
+      <label for="searchName">Search by name:</label>
+      <input type="text" formControlName="pokemonName" id="searchName"/>
       <button type="submit">search</button>
     </form>
   </div>

@@ -1,6 +1,6 @@
-import { Pokemon } from '@shared/models/pokemon';
 import { Component, Input, OnInit } from '@angular/core';
-import { PokemonDataService } from '@shared/services/pokemon-data.service';
+import { Router } from '@angular/router';
+import { Pokemon } from '@shared/models/pokemon';
 
 @Component({
   selector: 'app-pokemon',
@@ -10,11 +10,11 @@ import { PokemonDataService } from '@shared/services/pokemon-data.service';
 export class PokemonComponent implements OnInit {
   @Input() data!: Pokemon;
 
-  constructor(private pokemonDataService: PokemonDataService) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
-  searchPokemon(id: string) {
-    this.pokemonDataService.getPokemon(id);
+  goToPokemonDetail(id: string) {
+    this.router.navigate([`/pokemon-detail/${id}`]);
   }
 }

@@ -1,14 +1,24 @@
+@import "./src/assets/style/colors";
+@import "./src/assets/style/fonts";
+
 .header {
   padding: 0.5rem;
   gap: 3rem;
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height:5rem;
+  background-color: $fourth-color;
+
   @media (max-width: 425px) {
     flex-direction: column;
   }
   .search-field {
-    :first-child{
-      margin-right: 1rem;
+    font-family: $chakra-petch;
+    form{
+      display: flex;
+      gap: 1rem;
+      align-items: center;
     }
   }
 }

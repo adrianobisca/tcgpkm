@@ -3,8 +3,9 @@
   width: 100vw;
   display: grid;
   grid-template-areas: "header" "content" "footer";
-  grid-template-rows: minmax(5rem, auto) 1fr 5rem;
+  grid-template-rows: minmax(5rem, auto) 1fr minmax(5rem, auto);
   justify-items: center;
+  //  align-items: center;
   .header {
     grid-area: header;
     align-self: center;
