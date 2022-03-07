@@ -6,6 +6,7 @@ import { AppRoutingModule } from '@app/app-routing.module';
 import { AppComponent } from '@app/app.component';
 import { CoreModule } from '@core/core.module';
 import { PokemonsModule } from '@pokemons/pokemons.module';
+import { LoadingModule } from '@shared/components/loading/loading.module';
 import { InterceptorsModule } from '@shared/interceptors/interceptors.module';
 import { PokemonDataService } from '@shared/services/pokemon-data.service';
 
@@ -20,6 +21,7 @@ import { PokemonDataService } from '@shared/services/pokemon-data.service';
     PokemonsModule,
     CoreModule,
     InterceptorsModule,
+    LoadingModule,
   ],
   providers: [PokemonDataService],
   bootstrap: [AppComponent],

@@ -25,8 +25,8 @@ export class PokemonDetailComponent implements OnInit {
 
     this.pokemonDetail$ = this.pokemonDataService.pokemonDetail$;
   }
-  returnToHome(){
-    this.router.navigate([`/pokemon-list`]);
-  }
 
+  returnToHome() {
+    this.router.navigate([`./pokemon-list`]);
+  }
 }

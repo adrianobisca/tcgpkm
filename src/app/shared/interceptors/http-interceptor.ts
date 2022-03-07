@@ -1,14 +1,16 @@
 import {
   HttpHandler,
   HttpInterceptor,
-  HttpRequest
+  HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LoadingService } from '@shared/services/loading.service';
+import { finalize } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private loader: LoadingService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const apiKey = environment.apiKey;
@@ -17,6 +19,11 @@ export class AuthInterceptor implements HttpInterceptor {
       headers: req.headers.set('X-Api-Key', apiKey),
     });
 
-    return next.handle(authReq);
+    this.loader.show();
+    return next.handle(authReq).pipe(
+      finalize(() => {
+        this.loader.hide();
+      })
+    );
   }
 }

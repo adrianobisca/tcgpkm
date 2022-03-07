@@ -1,7 +1,7 @@
-import { PokemonDataService } from '@shared/services/pokemon-data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute, Router, RouterState } from '@angular/router';
+import { Router } from '@angular/router';
+import { PokemonDataService } from '@shared/services/pokemon-data.service';
 
 @Component({
   selector: 'app-header',

@@ -11,8 +11,7 @@ import { Observable } from 'rxjs';
 export class PokemonListComponent implements OnInit {
   pokemons$!: Observable<PokemonList>;
 
-  constructor(private pokemonDataService: PokemonDataService) {
-  }
+  constructor(private pokemonDataService: PokemonDataService) {}
 
   ngOnInit(): void {
     this.pokemons$ = this.pokemonDataService.pokemons$;
