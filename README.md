@@ -1,3 +1,25 @@
+# Pokemon TCG
+
+https://pokemon-cards-capture.surge.sh/
+
+Para rodar localmente:
+
+```
+git clone https://github.com/adrianobisca/FrontEndChallenge.git
+cd FrontEndChallenge
+npm i
+npm start
+```
+
+Acessar pela url padrão: http://localhost:4200
+
+listagem de pokemons -> /pokemon-list
+
+detalhe do pokemon -> /pokemon-detail/:idPokemon
+
+---
+---
+
 ## Processo
 
 Muito obrigado pelo interesse em fazer parte de nosso time de jedAIS!
