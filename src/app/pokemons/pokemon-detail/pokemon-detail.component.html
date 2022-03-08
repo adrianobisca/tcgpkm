@@ -42,3 +42,6 @@
     </div>
   </section>
 </ng-container>
+<ng-container *ngIf="selectedAttack">
+  <app-wanna-be-modal [attack]="selectedAttack"></app-wanna-be-modal>
+</ng-container>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Pokemon } from '@shared/models/pokemon';
 import { PokemonDataService } from '@shared/services/pokemon-data.service';
@@ -12,6 +12,9 @@ import { Observable } from 'rxjs';
 export class PokemonDetailComponent implements OnInit {
   pokemonDetail$!: Observable<Pokemon>;
 
+  //attack = new EventEmitter();
+  selectedAttack: any;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private pokemonDataService: PokemonDataService
@@ -23,8 +26,10 @@ export class PokemonDetailComponent implements OnInit {
     this.pokemonDataService.getPokemon(pokemonId ? pokemonId : '');
 
     this.pokemonDetail$ = this.pokemonDataService.pokemonDetail$;
+    //this.selectedAttack = this.attack;
   }
-  openAttackModal(attack:any){
-    console.log(attack)
+  openAttackModal(attack: any) {
+    this.selectedAttack = attack;
+    //this.attack.emit(attack);
   }
 }
