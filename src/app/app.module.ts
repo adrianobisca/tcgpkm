@@ -8,7 +8,6 @@ import { CoreModule } from '@core/core.module';
 import { PokemonsModule } from '@pokemons/pokemons.module';
 import { LoadingModule } from '@shared/components/loading/loading.module';
 import { InterceptorsModule } from '@shared/interceptors/interceptors.module';
-import { PokemonDataService } from '@shared/services/pokemon-data.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +22,7 @@ import { PokemonDataService } from '@shared/services/pokemon-data.service';
     InterceptorsModule,
     LoadingModule,
   ],
-  providers: [PokemonDataService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

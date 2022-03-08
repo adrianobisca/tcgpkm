@@ -1,24 +1,30 @@
 @import "./src/assets/style/colors";
 @import "./src/assets/style/fonts";
+@import "./src/assets/style/mixins";
 
 .header {
-  padding: 0.5rem;
-  gap: 3rem;
+  padding: 1rem 0.5rem;
+  gap: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height:5rem;
+  flex-direction: column;
   background-color: $fourth-color;
 
-  @media (max-width: 425px) {
-    flex-direction: column;
+  @include tablet {
+    gap: 2rem;
+    padding: 2rem;
   }
   .search-field {
     font-family: $chakra-petch;
-    form{
+    form {
       display: flex;
       gap: 1rem;
       align-items: center;
+      flex-direction: column;
+      @include tablet{
+        flex-direction: row;
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Pokemon } from '@shared/models/pokemon';
 import { PokemonDataService } from '@shared/services/pokemon-data.service';
 import { Observable } from 'rxjs';
@@ -13,7 +13,6 @@ export class PokemonDetailComponent implements OnInit {
   pokemonDetail$!: Observable<Pokemon>;
 
   constructor(
-    private router: Router,
     private activatedRoute: ActivatedRoute,
     private pokemonDataService: PokemonDataService
   ) {}
@@ -25,8 +24,7 @@ export class PokemonDetailComponent implements OnInit {
 
     this.pokemonDetail$ = this.pokemonDataService.pokemonDetail$;
   }
-
-  returnToHome() {
-    this.router.navigate([`./pokemon-list`]);
+  openAttackModal(attack:any){
+    console.log(attack)
   }
 }

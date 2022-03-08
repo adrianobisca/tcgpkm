@@ -1,0 +1,11 @@
+@import "./src/assets/style/mixins";
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 80%;
+  }
+  margin-top: 15%;
+}

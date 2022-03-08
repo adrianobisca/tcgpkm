@@ -25,7 +25,7 @@ export class PokemonDataService {
       .pipe(
         tap(console.log),
         map((pokemons) => this.pokemonList.next(pokemons)),
-        shareReplay(1)
+        shareReplay()
       ).subscribe();
   }
 
@@ -37,7 +37,7 @@ export class PokemonDataService {
       .pipe(
         tap(console.log),
         map((pokemon) => this.pokemonDetail.next(pokemon.data)),
-        shareReplay(1)
+        shareReplay()
       ).subscribe();
   }
 

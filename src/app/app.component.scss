@@ -1,24 +1,27 @@
+@import "./src/assets/style/mixins";
+
 .wrapper {
   height: 100vh;
-  width: 100vw;
   display: grid;
   grid-template-areas: "header" "content" "footer";
-  grid-template-rows: minmax(5rem, auto) 1fr minmax(5rem, auto);
-  justify-items: center;
-  //  align-items: center;
+  grid-template-rows: auto 1fr auto;
+
+  @include desktop {
+    grid-template-areas:
+      "header header header"
+      ". content ."
+      "footer footer footer";
+    grid-template-columns: auto 990px auto;
+  }
   .header {
     grid-area: header;
-    align-self: center;
-    width: 100%;
   }
-  .content-wrapper {
+  .content {
     grid-area: content;
-    overflow: hidden;
-    width: 80%;
+    overflow: auto;
+    align-self: auto;
   }
   .footer {
     grid-area: footer;
-    align-self: center;
-    width: 100%;
   }
 }

@@ -1,18 +1,37 @@
 @import "./src/assets/style/colors";
 @import "./src/assets/style/fonts";
+@import "./src/assets/style/mixins";
 
 .wrapper {
+  width: 80%;
+  margin: 2rem auto;
   border: solid 0.25rem $third-color;
   border-radius: 1.5rem;
   background-color: $secondary-color;
   display: grid;
-  grid-template-columns: 40% 1fr 1fr 1fr;
-  grid-template-rows: 40% 1fr 2fr;
+
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
   grid-template-areas:
-    "img nam nam nam"
-    "img typ wea res"
-    "img atk atk btn";
-  margin-top: 2rem;
+    "img"
+    "nam"
+    "typ"
+    "wea"
+    "res"
+    "atk";
+
+  @include desktop {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr 2fr;
+    grid-template-areas:
+      "img nam nam nam"
+      "img typ wea res"
+      "img atk atk atk";
+  }
+  p {
+    font-size: 1rem;
+  }
+
   & div {
     padding: 1rem;
     & ul {
@@ -21,16 +40,23 @@
   }
   .image {
     grid-area: img;
+    align-self: center;
     img {
       width: fill;
       width: -webkit-fill-available;
+      @include desktop {
+        width: 300px;
+      }
     }
   }
   .name {
     grid-area: nam;
     align-self: center;
-    & p:first-of-type{
-      font-size: 4rem;
+    & p:first-of-type {
+      font-size: 1.5rem;
+      @include tablet {
+        font-size: 4rem;
+      }
     }
   }
   .types {
@@ -44,11 +70,8 @@
   }
   .attacks {
     grid-area: atk;
-  }
-  .back-button{
-    grid-area: btn;
-    align-self: end;
-    justify-self: end;
-
+    button{
+      margin: 1rem 1rem 0 0;
+    }
   }
 }

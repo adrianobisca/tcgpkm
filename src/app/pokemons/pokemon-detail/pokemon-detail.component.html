@@ -33,14 +33,12 @@
     </div>
     <div class="attacks">
       <p>Attack(s)</p>
-      <ul>
-        <li *ngFor="let attack of details.attacks">
-          {{ attack.name }}
-        </li>
-      </ul>
-    </div>
-    <div class="back-button">
-      <button (click)="returnToHome()">return</button>
+      <button
+        *ngFor="let attack of details.attacks"
+        (click)="openAttackModal(attack)"
+      >
+        {{ attack.name }}
+      </button>
     </div>
   </section>
 </ng-container>
