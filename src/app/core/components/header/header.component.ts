@@ -35,7 +35,8 @@ export class HeaderComponent implements OnInit {
     }
 
     const str = this.searchForm.value.pokemonName;
-    this.pokemonDataService.getPokemonList('50', 'name', str);
+    console.log(str)
+    this.pokemonDataService.getPokemonList('50', 'name', str).subscribe();
     this.searchForm.reset();
   }
 }

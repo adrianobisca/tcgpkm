@@ -1,16 +1,15 @@
 @import "./src/assets/style/mixins";
 
 .wrapper {
-  padding: 1rem;
-  display: grid;
+  display: flex;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  justify-items: center;
-  grid-auto-flow: column;
-  align-content: center;
-  overflow: overlay;
-  @include tablet {
-    grid-auto-flow: row;
-    overflow-y: auto;
+  padding: 1rem;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+  @include desktop {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
+
 }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pokemon, PokemonList } from '@shared/models/pokemon';
 import { map, shareReplay, Subject, tap } from 'rxjs';
-import { environment } from './../../../environments/environment';
+import { environment } from '@environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -14,19 +14,15 @@ export class PokemonDataService {
   pokemons$ = this.pokemonList.asObservable();
   pokemonDetail$ = this.pokemonDetail.asObservable();
 
-  constructor(private httpClient: HttpClient) {
-    this.getPokemonList('50', 'name');
-  }
+  constructor(private httpClient: HttpClient) {}
 
   getPokemonList(pageSize: string, orderType: string, name?: string) {
     const url = this.assembleUrl('cards', pageSize, orderType, name);
-    this.httpClient
-      .get(url)
-      .pipe(
-        tap(console.log),
-        map((pokemons) => this.pokemonList.next(pokemons)),
-        shareReplay()
-      ).subscribe();
+    return this.httpClient.get(url).pipe(
+      tap(console.log),
+      map((pokemons) => this.pokemonList.next(pokemons)),
+      shareReplay()
+    );
   }
 
   getPokemon(pokemonId: string) {
@@ -38,7 +34,8 @@ export class PokemonDataService {
         tap(console.log),
         map((pokemon) => this.pokemonDetail.next(pokemon.data)),
         shareReplay()
-      ).subscribe();
+      )
+      .subscribe();
   }
 
   assembleUrl(endpoint: string, page?: string, order?: string, name?: string) {

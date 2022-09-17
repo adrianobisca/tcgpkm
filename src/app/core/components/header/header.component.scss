@@ -22,7 +22,7 @@
       gap: 1rem;
       align-items: center;
       flex-direction: column;
-      @include tablet{
+      @include desktop{
         flex-direction: row;
       }
     }

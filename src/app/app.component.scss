@@ -11,7 +11,7 @@
       "header header header"
       ". content ."
       "footer footer footer";
-    grid-template-columns: auto 990px auto;
+    grid-template-columns: 1fr 7fr 1fr;
   }
   .header {
     grid-area: header;
@@ -19,7 +19,6 @@
   .content {
     grid-area: content;
     overflow: auto;
-    align-self: auto;
   }
   .footer {
     grid-area: footer;
