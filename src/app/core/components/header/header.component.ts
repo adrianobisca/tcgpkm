@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PokemonDataService } from '@shared/services/pokemon-data.service';
 import { PokemonList } from '@shared/models/pokemon';
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
   asd! : Observable<PokemonList>;
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private pokemonDataService: PokemonDataService,
     private router: Router
   ) {}
