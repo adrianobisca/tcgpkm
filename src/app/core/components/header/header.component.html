@@ -2,7 +2,6 @@
   <h1>Gotta catch 'em all!</h1>
   <div class="search-field">
     <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-      <label for="searchName">Search by name:</label>
       <input type="text" formControlName="pokemonName" id="searchName"/>
       <button type="submit">search</button>
     </form>

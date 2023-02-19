@@ -1,49 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Pokemon, PokemonList } from '@shared/models/pokemon';
-import { map, shareReplay, Subject, tap } from 'rxjs';
 import { environment } from '@environments/environment';
+import { PokemonDetail, PokemonList } from '@shared/models/pokemon.model';
+import { Observable } from 'rxjs';
+
+export interface requestOptions {
+  page?: string;
+  pageSize?: string;
+  orderType?: string;
+  name?: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class PokemonDataService {
-  private pokemonList = new Subject<PokemonList>();
-  private pokemonDetail = new Subject<Pokemon>();
+  constructor(private httpClient: HttpClient) { }
 
-  pokemons$ = this.pokemonList.asObservable();
-  pokemonDetail$ = this.pokemonDetail.asObservable();
-
-  constructor(private httpClient: HttpClient) {}
-
-  getPokemonList(pageSize: string, orderType: string, name?: string) {
-    const url = this.assembleUrl('cards', pageSize, orderType, name);
-    return this.httpClient.get(url).pipe(
-      tap(console.log),
-      map((pokemons) => this.pokemonList.next(pokemons)),
-      shareReplay()
-    );
+  getList(options: requestOptions): Observable<PokemonList> {
+    const p = options.page ? `?page=${options.page}` : '';
+    const ps = options.pageSize ? `?pageSize=${options.pageSize}` : '';
+    const o = options.orderType ? `&orderBy=${options.orderType}` : '';
+    const n = options.name ? `&q=name:${options.name}*` : '';
+    const FORMATED_URL = `${environment.apiUrl}cards${p}${ps}${o}${n}`;
+    return this.httpClient.get<PokemonList>(FORMATED_URL);
   }
 
-  getPokemon(pokemonId: string) {
-    const url = this.assembleUrl('cards/' + pokemonId);
-
-    this.httpClient
-      .get(url)
-      .pipe(
-        tap(console.log),
-        map((pokemon) => this.pokemonDetail.next(pokemon.data)),
-        shareReplay()
-      )
-      .subscribe();
-  }
-
-  assembleUrl(endpoint: string, page?: string, order?: string, name?: string) {
-    const pageSize = page ? `?pageSize=${page}` : '';
-    const orderType = order ? `&orderBy=${order}` : '';
-    const searchParams = name ? `&q=name:${name}*` : '';
-    const apiUrl =
-      environment.apiUrl + endpoint + pageSize + orderType + searchParams;
-    return apiUrl;
+  getCardDetail(pokemonId: string): Observable<PokemonDetail> {
+    const FORMATED_URL = `${environment.apiUrl}cards/${pokemonId}`;
+    return this.httpClient.get<PokemonDetail>(FORMATED_URL);
   }
 }

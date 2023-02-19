@@ -1,9 +1,8 @@
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PokemonDataService } from '@shared/services/pokemon-data.service';
-import { PokemonList } from '@shared/models/pokemon';
+import { Store } from '@ngxs/store';
+import { getPokemonList } from '@shared/actions/pokemon.actions';
 
 @Component({
   selector: 'app-header',
@@ -15,16 +14,13 @@ export class HeaderComponent implements OnInit {
     pokemonName: '',
   });
 
-  asd! : Observable<PokemonList>;
   constructor(
     private formBuilder: UntypedFormBuilder,
-    private pokemonDataService: PokemonDataService,
-    private router: Router
+    private router: Router,
+    private store:Store
   ) {}
 
   ngOnInit(): void {
-
-    this.asd = this.pokemonDataService.pokemons$
   }
 
   onSubmit() {
@@ -35,8 +31,7 @@ export class HeaderComponent implements OnInit {
     }
 
     const str = this.searchForm.value.pokemonName;
-    console.log(str)
-    this.pokemonDataService.getPokemonList('50', 'name', str).subscribe();
+    this.store.dispatch(new getPokemonList(str))
     this.searchForm.reset();
   }
 }

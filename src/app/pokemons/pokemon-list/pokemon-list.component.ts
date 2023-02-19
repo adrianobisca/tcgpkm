@@ -1,7 +1,10 @@
-import { LoadingService } from '@shared/services/loading.service';
 import { Component, OnInit } from '@angular/core';
-import { PokemonList } from '@shared/models/pokemon';
-import { PokemonDataService } from '@shared/services/pokemon-data.service';
+import { Select, Store } from '@ngxs/store';
+import { getPokemonList } from '@shared/actions/pokemon.actions';
+import { Pokemon } from '@shared/models/pokemon.model';
+import { LoadingState } from '@shared/state/loading.state';
+import { PokemonDetailState } from '@shared/state/pokemon-detail.state';
+import { PokemonState } from '@shared/state/pokemon.state';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,17 +13,19 @@ import { Observable } from 'rxjs';
   styleUrls: ['./pokemon-list.component.scss'],
 })
 export class PokemonListComponent implements OnInit {
-  pokemons$!: Observable<PokemonList>;
-  loading$!: Observable<boolean>;
+  @Select(PokemonState.getCardsList) pokemons$! : Observable<Pokemon[]>;
+  @Select(LoadingState.getStatus) loadingStatus$!:Observable<boolean>;
 
   constructor(
-    private pokemonDataService: PokemonDataService,
-    private loadingService: LoadingService
-  ) {}
+    private store: Store
+  ) { }
 
   ngOnInit(): void {
-    this.pokemons$ = this.pokemonDataService.pokemons$;
-    this.loading$ = this.loadingService.loading$;
-    this.pokemonDataService.getPokemonList('50', 'name').subscribe();
+    this.getList('');
+  }
+
+  getList(payload: any) {
+    //this.store.reset(PokemonDetailState)
+    this.store.dispatch(new getPokemonList(payload));
   }
 }

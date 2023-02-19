@@ -1,7 +1,10 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Pokemon } from '@shared/models/pokemon';
-import { PokemonDataService } from '@shared/services/pokemon-data.service';
+import { Select, Store } from '@ngxs/store';
+import { getPokemonDetail } from '@shared/actions/pokemon-detail.actions';
+import { Pokemon } from '@shared/models/pokemon.model';
+import { LoadingState } from '@shared/state/loading.state';
+import { PokemonDetailState } from '@shared/state/pokemon-detail.state';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,26 +13,27 @@ import { Observable } from 'rxjs';
   styleUrls: ['./pokemon-detail.component.scss'],
 })
 export class PokemonDetailComponent implements OnInit {
-  pokemonDetail$!: Observable<Pokemon>;
 
-  //attack = new EventEmitter();
+  @Select(PokemonDetailState.getCard) pokemonDetail$!: Observable<Pokemon>;
+  @Select(LoadingState.getStatus) loading$!: Observable<boolean>;
+
   selectedAttack: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private pokemonDataService: PokemonDataService
-  ) {}
+    private store: Store
+  ) { }
 
   ngOnInit(): void {
     const routeParams = this.activatedRoute.snapshot.paramMap;
     const pokemonId = routeParams.get('pokemonId');
-    this.pokemonDataService.getPokemon(pokemonId ? pokemonId : '');
-
-    this.pokemonDetail$ = this.pokemonDataService.pokemonDetail$;
-    //this.selectedAttack = this.attack;
+    this.getCard(pokemonId ?? '')
   }
   openAttackModal(attack: any) {
     this.selectedAttack = attack;
-    //this.attack.emit(attack);
+  }
+
+  getCard(id: string) {
+    this.store.dispatch(new getPokemonDetail(id))
   }
 }

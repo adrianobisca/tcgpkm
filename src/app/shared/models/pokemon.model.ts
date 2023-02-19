@@ -6,6 +6,10 @@ export interface PokemonList {
   totalCount: number;
 }
 
+export interface PokemonDetail{
+  data: Pokemon;
+}
+
 export interface Pokemon {
   id: string;
   name: string;

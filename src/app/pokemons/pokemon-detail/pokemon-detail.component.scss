@@ -42,8 +42,7 @@
     grid-area: img;
     align-self: center;
     img {
-      width: fill;
-      width: -webkit-fill-available;
+      width: stretch;
       @include desktop {
         width: 300px;
       }

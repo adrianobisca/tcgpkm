@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Attack } from '@shared/models/pokemon';
+import { Attack } from '@shared/models/pokemon.model';
 
 @Component({
   selector: 'app-wanna-be-modal',

@@ -1,7 +1,7 @@
 <ng-container *ngIf="pokemons$ | async as pokemons">
-  <ng-container *ngIf="!(loading$ | async)">
+  <ng-container *ngIf="!(loadingStatus$ | async)">
     <section class="wrapper">
-      <ng-container *ngFor="let pokemon of pokemons.data">
+      <ng-container *ngFor="let pokemon of pokemons">
         <app-pokemon [data]="pokemon" class="card"></app-pokemon>
       </ng-container>
     </section>
