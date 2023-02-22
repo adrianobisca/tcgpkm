@@ -12,20 +12,6 @@
   @include desktop {
     width: auto;
   }
-  .id {
-    font-size: 1rem;
-  }
-  &:hover {
-    box-shadow: 5px 5px 6px rgb(0 0 0 / 45%);
-  }
-  &-info {
-    padding: 0.5rem;
-    font-family: $permanent-marker;
-    width: min-content;
-    p {
-      margin-bottom: 0.5rem;
-    }
-  }
   img {
     width: 100%;
     transition: transform 0.2s;

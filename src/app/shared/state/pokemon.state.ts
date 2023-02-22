@@ -33,11 +33,7 @@ export class PokemonState {
 
     @Action(getPokemonList)
     getList({ patchState }: StateContext<PokemonStateModel>, { payload }: getPokemonList) {
-        const OPTIONS = {
-            pageSize : '50',
-            name: payload
-        }
-        return this.pokemonDataService.getList(OPTIONS).pipe(
+        return this.pokemonDataService.getList(payload).pipe(
             map(response => {
                 patchState({
                     data: response

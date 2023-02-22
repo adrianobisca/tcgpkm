@@ -127,3 +127,10 @@ export interface Attack {
   damage: string;
   text: string;
 }
+
+export interface searchParams{
+  page?: string;
+  pageSize? : string;
+  orderType?: 'name' | 'number';
+  name?: string;
+}

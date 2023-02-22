@@ -1,12 +1,3 @@
 <div class="card" (click)="goToPokemonDetail(data.id)">
   <img src="{{ data.images.small }}" alt="" />
-  <div class="card-info">
-    <p>{{ data.name }}</p>
-    <p class="id">{{ data.id }}</p>
-    <ul>
-      <li *ngFor="let type of data.types">
-        {{ type }}
-      </li>
-    </ul>
-  </div>
 </div>

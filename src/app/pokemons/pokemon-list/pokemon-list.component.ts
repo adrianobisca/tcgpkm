@@ -13,15 +13,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./pokemon-list.component.scss'],
 })
 export class PokemonListComponent implements OnInit {
-  @Select(PokemonState.getCardsList) pokemons$! : Observable<Pokemon[]>;
-  @Select(LoadingState.getStatus) loadingStatus$!:Observable<boolean>;
+  @Select(PokemonState.getCardsList) pokemons$!: Observable<Pokemon[]>;
+  @Select(LoadingState.getStatus) loadingStatus$!: Observable<boolean>;
 
-  constructor(
-    private store: Store
-  ) { }
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.getList('');
+    this.getList({ pageSize: '50' });
   }
 
   getList(payload: any) {

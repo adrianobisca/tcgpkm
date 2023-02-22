@@ -1,14 +1,6 @@
+import { searchParams } from "@shared/models/pokemon.model";
 
 export class getPokemonList {
     static readonly type = '[POKEMONS] Get list'
-    constructor(public payload: string) { }
+    constructor(public payload: searchParams) { }
 }
-
-/**
- * pageSize
- * orderType
- * name optional
- * 
- * 
- * 
- */

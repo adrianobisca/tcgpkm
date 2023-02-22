@@ -1,15 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
-import { PokemonDetail, PokemonList } from '@shared/models/pokemon.model';
+import { PokemonDetail, PokemonList, searchParams } from '@shared/models/pokemon.model';
 import { Observable } from 'rxjs';
-
-export interface requestOptions {
-  page?: string;
-  pageSize?: string;
-  orderType?: string;
-  name?: string;
-}
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +10,7 @@ export interface requestOptions {
 export class PokemonDataService {
   constructor(private httpClient: HttpClient) { }
 
-  getList(options: requestOptions): Observable<PokemonList> {
+  getList(options: searchParams): Observable<PokemonList> {
     const p = options.page ? `?page=${options.page}` : '';
     const ps = options.pageSize ? `?pageSize=${options.pageSize}` : '';
     const o = options.orderType ? `&orderBy=${options.orderType}` : '';
