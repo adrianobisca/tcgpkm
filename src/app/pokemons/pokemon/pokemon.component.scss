@@ -4,13 +4,35 @@
 
 .card {
   cursor: pointer;
-  border: solid 3px $third-color;
   border-radius: 10px;
-  padding: 0.5rem;
-  background-color: $secondary-color;
   width: 200px;
   @include desktop {
     width: auto;
+  }
+  position: relative;
+  &:hover {
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateY(var(--rotateY))
+      rotateX(var(--rotateX));
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      border-radius: inherit;
+    }
+    &::after {
+      inset: -1rem;
+      background: linear-gradient(-45deg, purple, lime);
+      transform: translateZ(-50px);
+      transition: transform 2s;
+    }
+    &::before {
+      inset: 0.75rem;
+      background: black;
+      transform: translateZ(-49px);
+      filter: blur(15px);
+      opacity: 0.5;
+    }
   }
   img {
     width: 100%;
