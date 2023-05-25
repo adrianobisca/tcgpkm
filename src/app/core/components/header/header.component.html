@@ -1,8 +1,14 @@
 <header class="header">
-  <h1>Gotta catch 'em all!</h1>
+  <div>
+    <h1>POKEMON TCG</h1>
+    <h2>
+      powered by:
+      <a href="https://pokemontcg.io/" target="_blank">Pokémon TCG API</a>
+    </h2>
+  </div>
   <div class="search-field">
     <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-      <input type="text" formControlName="pokemonName" id="searchName"/>
+      <input type="text" formControlName="pokemonName" id="searchName" />
       <button type="submit">search</button>
     </form>
   </div>

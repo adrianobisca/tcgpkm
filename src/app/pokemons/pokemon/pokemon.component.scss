@@ -21,7 +21,7 @@
     }
     &::after {
       inset: -1rem;
-      background: linear-gradient(-45deg, purple, lime);
+      background: linear-gradient(-45deg, $third-color, $fourth-color);
       transform: translateZ(-50px);
       transition: transform 2s;
     }

@@ -3,7 +3,6 @@
 @import "./assets/style/fonts";
 @import "./assets/style/mixins";
 
-
 body {
   background-color: $first-color;
 }
@@ -14,6 +13,10 @@ h1 {
   @include tablet {
     font-size: 2rem;
   }
+}
+
+h2 {
+  font-family: $permanent-marker;
 }
 
 p {
@@ -30,7 +33,7 @@ ul {
   }
 }
 
-button{
+button {
   padding: 0.5rem;
   border-radius: 0.25rem;
   min-width: 5rem;
@@ -38,6 +41,6 @@ button{
   cursor: pointer;
 }
 
-input{
+input {
   padding: 0.5rem;
 }
