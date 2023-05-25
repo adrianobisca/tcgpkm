@@ -6,11 +6,14 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pokemon } from '@shared/models/pokemon.model';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
-  selector: 'app-pokemon',
-  templateUrl: './pokemon.component.html',
-  styleUrls: ['./pokemon.component.scss'],
+    selector: 'app-pokemon',
+    templateUrl: './pokemon.component.html',
+    styleUrls: ['./pokemon.component.scss'],
+    standalone: true,
+    imports: [NgOptimizedImage],
 })
 export class PokemonComponent implements OnInit {
   @Input() data!: Pokemon;

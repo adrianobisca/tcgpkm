@@ -6,11 +6,20 @@ import { Pokemon } from '@shared/models/pokemon.model';
 import { LoadingState } from '@shared/state/loading.state';
 import { PokemonDetailState } from '@shared/state/pokemon-detail.state';
 import { Observable } from 'rxjs';
+import { WannaBeModalComponent } from '../../shared/components/wanna-be-modal/wanna-be-modal.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-pokemon-detail',
-  templateUrl: './pokemon-detail.component.html',
-  styleUrls: ['./pokemon-detail.component.scss'],
+    selector: 'app-pokemon-detail',
+    templateUrl: './pokemon-detail.component.html',
+    styleUrls: ['./pokemon-detail.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        NgFor,
+        WannaBeModalComponent,
+        AsyncPipe,
+    ],
 })
 export class PokemonDetailComponent implements OnInit {
 

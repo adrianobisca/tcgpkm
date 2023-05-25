@@ -6,11 +6,20 @@ import { LoadingState } from '@shared/state/loading.state';
 import { PokemonDetailState } from '@shared/state/pokemon-detail.state';
 import { PokemonState } from '@shared/state/pokemon.state';
 import { Observable } from 'rxjs';
+import { PokemonComponent } from '../pokemon/pokemon.component';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-pokemon-list',
-  templateUrl: './pokemon-list.component.html',
-  styleUrls: ['./pokemon-list.component.scss'],
+    selector: 'app-pokemon-list',
+    templateUrl: './pokemon-list.component.html',
+    styleUrls: ['./pokemon-list.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        NgFor,
+        PokemonComponent,
+        AsyncPipe,
+    ],
 })
 export class PokemonListComponent implements OnInit {
   @Select(PokemonState.getCardsList) pokemons$!: Observable<Pokemon[]>;
