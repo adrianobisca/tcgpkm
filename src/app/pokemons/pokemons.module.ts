@@ -4,6 +4,7 @@ import { PokemonDetailComponent } from '@pokemons/pokemon-detail/pokemon-detail.
 import { PokemonListComponent } from '@pokemons/pokemon-list/pokemon-list.component';
 import { PokemonComponent } from '@pokemons/pokemon/pokemon.component';
 import { WannaBeModalModule } from '@shared/components/wanna-be-modal/wanna-be-modal.module';
+import { NgOptimizedImage } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,7 @@ import { WannaBeModalModule } from '@shared/components/wanna-be-modal/wanna-be-m
     PokemonListComponent,
     PokemonDetailComponent,
   ],
-  imports: [CommonModule, WannaBeModalModule],
+  imports: [CommonModule, WannaBeModalModule, NgOptimizedImage],
   exports: [PokemonComponent, PokemonListComponent, PokemonDetailComponent],
 })
 export class PokemonsModule {}

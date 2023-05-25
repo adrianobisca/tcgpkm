@@ -8,10 +8,10 @@
 
   @include desktop {
     grid-template-areas:
-      "header header header"
-      ". content ."
-      "footer footer footer";
-    grid-template-columns: 1fr 7fr 1fr;
+      "header"
+      "content"
+      "footer";
+    grid-template-columns: 1fr;
   }
   .header {
     grid-area: header;
@@ -19,6 +19,7 @@
   .content {
     grid-area: content;
     overflow: auto;
+    padding: 1rem;
   }
   .footer {
     grid-area: footer;
