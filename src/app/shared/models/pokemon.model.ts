@@ -6,7 +6,7 @@ export interface PokemonList {
   totalCount: number;
 }
 
-export interface PokemonDetail{
+export interface PokemonDetail {
   data: Pokemon;
 }
 
@@ -128,9 +128,10 @@ export interface Attack {
   text: string;
 }
 
-export interface searchParams{
+export interface searchParams {
   page?: string;
-  pageSize? : string;
+  pageSize: string;
   orderType?: 'name' | 'number';
   name?: string;
+  query?: string;
 }

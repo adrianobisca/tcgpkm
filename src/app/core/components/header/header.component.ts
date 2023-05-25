@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { getPokemonList } from '@shared/actions/pokemon.actions';
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss'],
-    standalone: true,
-    imports: [FormsModule, ReactiveFormsModule],
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
+  standalone: true,
+  imports: [FormsModule, ReactiveFormsModule],
 })
 export class HeaderComponent implements OnInit {
   searchForm = this.formBuilder.group({
@@ -19,11 +23,10 @@ export class HeaderComponent implements OnInit {
   constructor(
     private formBuilder: UntypedFormBuilder,
     private router: Router,
-    private store:Store
+    private store: Store
   ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
     const isAtListPage = this.router.url.includes('list');
@@ -33,7 +36,7 @@ export class HeaderComponent implements OnInit {
     }
 
     const str = this.searchForm.value.pokemonName;
-    this.store.dispatch(new getPokemonList(str))
+    this.store.dispatch(new getPokemonList({ pageSize: '50', name: str }));
     this.searchForm.reset();
   }
 }
