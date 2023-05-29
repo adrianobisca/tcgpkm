@@ -4,43 +4,99 @@
       <div class="image">
         <img [src]="details.images.large" alt="" />
       </div>
+
       <div class="name">
-        <p>{{ details.name }}</p>
-        <p>id: {{ details.id }}</p>
+        <p>{{ details.nationalPokedexNumbers }} {{ details.name }}</p>
+        <p>
+          {{ details.supertype }} -
+          <span *ngFor="let subtype of details.subtypes">{{ subtype }}</span>
+        </p>
       </div>
-      <div class="types">
-        <p>Type(s)</p>
-        <ul>
-          <li *ngFor="let type of details.types">
-            {{ type }}
-          </li>
-        </ul>
+
+      <div class="hp">
+        <p>
+          HP {{ details.hp }}
+          <span *ngFor="let type of details.types">
+            <app-type-img [type]="type"></app-type-img>
+          </span>
+        </p>
       </div>
+
       <div class="weaknesses">
         <p>Weaknesse(s)</p>
-        <ul>
-          <li *ngFor="let weakness of details.weaknesses">
-            {{ weakness.type }}
-          </li>
-        </ul>
+        <p>
+          <span *ngFor="let weakness of details.weaknesses">
+            <app-type-img [type]="weakness.type"></app-type-img>
+            {{ weakness.value }}
+          </span>
+        </p>
       </div>
+
       <div class="resistances">
         <p>Resistance(s)</p>
-        <ul>
-          <li *ngFor="let resistance of details.resistances">
-            {{ resistance.type }}
-          </li>
-        </ul>
+        <p>
+          <span *ngFor="let resistance of details.resistances">
+            <app-type-img [type]="resistance.type"></app-type-img>
+            {{ resistance.value }}
+          </span>
+        </p>
+      </div>
+
+      <div class="retreat">
+        <p>Retreat cost</p>
+        <p>
+          <span *ngFor="let cost of details.retreatCost">
+            <app-type-img [type]="cost"></app-type-img>
+          </span>
+        </p>
       </div>
       <div class="attacks">
+        <hr class="divisor" />
+
         <p>Attack(s)</p>
-        <button *ngFor="let attack of details.attacks" (click)="openAttackModal(attack)">
-          {{ attack.name }}
-        </button>
+        <ng-container *ngFor="let attack of details.attacks">
+          <div class="detail">
+            <span>
+              <app-type-img
+                *ngFor="let cost of attack.cost"
+                [type]="cost"
+              ></app-type-img>
+            </span>
+            <p class="name">{{ attack.name }}</p>
+            <p>{{ attack.damage }}</p>
+          </div>
+          <p *ngIf="attack.text" class="description">
+            Description: {{ attack.text }}
+          </p>
+        </ng-container>
+
+        <hr class="divisor" />
+      </div>
+
+      <div class="artist">
+        <p>Artist</p>
+        <p>
+          {{ details.artist }}
+        </p>
+      </div>
+      <div class="rarity">
+        <p>Rarity</p>
+        <p>
+          {{ details.rarity }}
+        </p>
+      </div>
+      <div class="setName">
+        <p>Set name</p>
+        <p>
+          {{ details.set.name }}
+          <img
+            ngSrc="{{ details.set.images.symbol }}"
+            [alt]="details.set.name"
+            height="24"
+            width="24"
+          />
+        </p>
       </div>
     </section>
   </ng-container>
-</ng-container>
-<ng-container *ngIf="selectedAttack">
-  <app-wanna-be-modal [attack]="selectedAttack"></app-wanna-be-modal>
 </ng-container>

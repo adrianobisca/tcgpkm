@@ -16,7 +16,7 @@ export interface Pokemon {
   supertype: string;
   subtypes: string[];
   hp: string;
-  types: string[];
+  types: cardType[];
   evolvesTo?: string[];
   evolvesFrom?: string[];
   rules: string[];
@@ -24,31 +24,23 @@ export interface Pokemon {
     {
       name?: string;
       text?: string;
-      type?: string;
+      type?: cardType;
     }
   ];
-  attacks: [
-    {
-      name: string;
-      cost: string[];
-      convertedEnergyCost: number;
-      damage: string;
-      text: string;
-    }
-  ];
+  attacks: Attack[];
   weaknesses: [
     {
-      type: string;
+      type: cardType;
       value: string;
     }
   ];
   resistances?: [
     {
-      type?: string;
+      type?: cardType;
       value?: string;
     }
   ];
-  retreatCost: string[];
+  retreatCost: cardType[];
   convertedRetreatCost: number;
   set: {
     id: string;
@@ -122,7 +114,7 @@ export interface Pokemon {
 
 export interface Attack {
   name: string;
-  cost: string[];
+  cost: cardType[];
   convertedEnergyCost?: number;
   damage: string;
   text: string;
@@ -135,3 +127,18 @@ export interface searchParams {
   name?: string;
   query?: string;
 }
+
+export type cardType =
+  | 'Colorless'
+  | 'Darkness'
+  | 'Dragon'
+  | 'Fairy'
+  | 'Fighting'
+  | 'Fire'
+  | 'Grass'
+  | 'Lightning'
+  | 'Metal'
+  | 'Psychic'
+  | 'Water'
+  | ''
+  | undefined;

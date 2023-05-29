@@ -2,36 +2,47 @@
 @import "./src/assets/style/fonts";
 @import "./src/assets/style/mixins";
 
-.header {
-  padding: 2rem;
-  gap: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
+header {
   background-color: $fourth-color;
-
-  h1 {
-    margin-bottom: 0.5rem;
-  }
-  @include tablet {
-    gap: 2rem;
+  .wrapper {
     padding: 2rem;
-  }
+    gap: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+    @include tablet {
+      gap: 2rem;
+      padding: 2rem;
+    }
 
-  @include desktop {
-    flex-direction: row;
-  }
+    @include desktop {
+      flex-direction: row;
+      max-width: $desktop;
+    }
 
-  .search-field {
-    font-family: $chakra-petch;
-    form {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      flex-direction: column;
-      @include desktop {
-        flex-direction: row;
+    @include xl-desktop {
+      flex-direction: row;
+      max-width: $xl-desktop;
+    }
+
+    .search-field {
+      font-family: $chakra-petch;
+      form {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        flex-direction: column;
+        @include desktop {
+          flex-direction: row;
+        }
+        @include xl-desktop {
+          flex-direction: row;
+        }
       }
     }
   }

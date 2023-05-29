@@ -3,48 +3,86 @@
 @import "./src/assets/style/mixins";
 
 .wrapper {
-  width: 80%;
+  width: 100%;
+  max-width: calc(100% - 50px);
   margin: 2rem auto;
   border: solid 0.25rem $third-color;
   border-radius: 1.5rem;
   background-color: $secondary-color;
   display: grid;
+  padding: 0.5rem;
 
-  grid-template-columns: 100%;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    "img"
-    "nam"
-    "typ"
-    "wea"
-    "res"
-    "atk";
+    "img img"
+    "nam hp"
+    "atk atk"
+    "wea res"
+    "ret art"
+    "rar set";
 
-  @include desktop {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 2fr 1fr 2fr;
-    grid-template-areas:
-      "img nam nam nam"
-      "img typ wea res"
-      "img atk atk atk";
-  }
   p {
     font-size: 1rem;
   }
 
-  & div {
+  @include tablet {
+    max-width: #{$tablet - 100px};
+    p {
+      font-size: 2rem;
+    }
     padding: 1rem;
+  }
+
+  @include desktop {
+    grid-template-columns: auto 1fr 1fr 1fr;
+    grid-template-rows: 1fr auto 1fr 1fr;
+    grid-template-areas:
+      "img nam nam hp"
+      "img atk atk atk"
+      "img wea res ret"
+      "img art rar set";
+    max-width: #{$desktop - 100px};
+    p {
+      font-size: 2rem;
+    }
+    padding: 1rem;
+  }
+  @include xl-desktop {
+    grid-template-columns: auto 1fr 1fr 1fr;
+    grid-template-rows: 1fr auto 1fr 1fr;
+    grid-template-areas:
+      "img nam nam hp"
+      "img atk atk atk"
+      "img wea res ret"
+      "img art rar set";
+    max-width: #{$xl-desktop - 100px};
+    p {
+      font-size: 2rem;
+    }
+    padding: 1rem;
+  }
+
+  & div {
+    padding: 0.5rem;
     & ul {
       margin-top: 1rem;
+    }
+    & p:first-of-type {
+      margin-bottom: 0.5rem;
     }
   }
   .image {
     grid-area: img;
-    align-self: center;
     img {
       width: stretch;
       @include desktop {
-        width: 300px;
+        width: auto;
+        max-width: 300px;
+      }
+      @include xl-desktop {
+        width: auto;
+        max-width: 400px;
       }
     }
   }
@@ -58,6 +96,11 @@
       }
     }
   }
+  .hp {
+    grid-area: hp;
+    align-self: center;
+    justify-self: flex-end;
+  }
   .types {
     grid-area: typ;
   }
@@ -69,8 +112,46 @@
   }
   .attacks {
     grid-area: atk;
-    button{
-      margin: 1rem 1rem 0 0;
+    .divisor {
+      grid-area: hr;
+      border: solid 0.125rem $third-color;
+      border-radius: 10px;
+      width: 100%;
+      &:first-of-type {
+        margin-bottom: 2rem;
+      }
+      &:last-of-type {
+        margin-top: 2rem;
+      }
     }
+    .detail {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+      .name {
+        flex: 1;
+      }
+    }
+    .description {
+      font-size: 1.5rem;
+    }
+  }
+  .artists {
+    grid-area: art;
+  }
+  .ratity {
+    grid-area: rar;
+  }
+  .setName {
+    grid-area: set;
+    img {
+      width: auto;
+      height: 24px;
+    }
+  }
+
+  .retreat {
+    grid-area: ret;
   }
 }
