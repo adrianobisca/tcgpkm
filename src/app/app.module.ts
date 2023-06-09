@@ -15,6 +15,9 @@ import { PokemonDetailState } from '@shared/state/pokemon-detail.state';
 import { FooterComponent } from '@core/components/footer/footer.component';
 import { HeaderComponent } from '@core/components/header/header.component';
 import { LoadingComponent } from '@shared/components/loading/loading.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchParamsState } from '@shared/state/search-params.state';
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,9 +31,16 @@ import { LoadingComponent } from '@shared/components/loading/loading.component';
     FooterComponent,
     HeaderComponent,
     LoadingComponent,
-    NgxsModule.forRoot([PokemonState, LoadingState, PokemonDetailState]),
+    NgxsModule.forRoot([
+      PokemonState,
+      LoadingState,
+      PokemonDetailState,
+      SearchParamsState,
+    ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
+    NgxsRouterPluginModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

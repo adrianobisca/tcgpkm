@@ -1,5 +1,8 @@
-export interface PokemonList {
+export interface PokemonList extends Pagination {
   data: Pokemon[];
+}
+
+export interface Pagination {
   page: number;
   pageSize: number;
   count: number;
@@ -124,7 +127,7 @@ export interface searchParams {
   page?: string;
   pageSize: string;
   orderType?: 'name' | 'number';
-  name?: string;
+  name?: string | null;
   query?: string;
 }
 

@@ -14,6 +14,7 @@ header {
     margin: 0 auto;
     h1 {
       margin-bottom: 0.5rem;
+      cursor: pointer;
     }
     @include tablet {
       gap: 2rem;

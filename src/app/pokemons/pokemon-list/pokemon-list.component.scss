@@ -6,11 +6,19 @@
   padding: 1rem;
   align-items: center;
   justify-items: center;
-  height: 100%;
   box-sizing: border-box;
+  margin: 0 auto;
+  @include tablet {
+    padding: 2rem;
+  }
   @include desktop {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: $desktop;
   }
-
+  @include xl-desktop {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: $xl-desktop;
+  }
 }

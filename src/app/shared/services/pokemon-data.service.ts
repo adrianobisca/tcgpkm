@@ -19,7 +19,8 @@ export class PokemonDataService {
     const p = options.page ? `&page=${options.page}` : '';
     const o = options.orderType ? `&orderBy=${options.orderType}` : '';
     const n = options.name ? `&q=name:${options.name}*` : '';
-    const FORMATED_URL = `${environment.apiUrl}cards${ps}${p}${o}${n}`;
+    const q = options.query ? `&q=${options.query}` : '';
+    const FORMATED_URL = `${environment.apiUrl}cards${ps}${p}${o}${n}${q}`;
     return this.httpClient.get<PokemonList>(FORMATED_URL);
   }
 

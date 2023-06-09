@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option [value]="null">None</mat-option>
+        <mat-option *ngFor="let type of cardTypes" [value]="type | lowercase">{{
+          type
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Search for card here</mat-label>
+      <input type="text" formControlName="cardName" id="searchName" matInput />
+    </mat-form-field>
+    <button mat-icon-button color="primary" type="submit">
+      <mat-icon>search</mat-icon>
+    </button>
+  </form>
+</div>
