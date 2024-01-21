@@ -1,17 +1,14 @@
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Select, Store } from '@ngxs/store';
 import { getPokemonList } from '@shared/actions/pokemon.actions';
+import { setPaginator } from '@shared/actions/search-params.actions';
 import { Pagination, Pokemon } from '@shared/models/pokemon.model';
 import { LoadingState } from '@shared/state/loading.state';
 import { PokemonState } from '@shared/state/pokemon.state';
 import { Observable } from 'rxjs';
 import { PokemonComponent } from '../pokemon/pokemon.component';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import {
-  setPaginator,
-  setSearchParams,
-} from '@shared/actions/search-params.actions';
 
 @Component({
   selector: 'app-pokemon-list',

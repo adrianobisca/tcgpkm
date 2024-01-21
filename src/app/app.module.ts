@@ -18,6 +18,7 @@ import { LoadingComponent } from '@shared/components/loading/loading.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchParamsState } from '@shared/state/search-params.state';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { OptionsState } from '@shared/state/options.state';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,6 +37,7 @@ import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
       LoadingState,
       PokemonDetailState,
       SearchParamsState,
+      OptionsState,
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),

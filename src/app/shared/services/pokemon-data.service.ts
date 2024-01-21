@@ -4,6 +4,7 @@ import { environment } from '@environments/environment';
 import {
   PokemonDetail,
   PokemonList,
+  defaultResponse,
   searchParams,
 } from '@shared/models/pokemon.model';
 import { Observable } from 'rxjs';
@@ -20,12 +21,32 @@ export class PokemonDataService {
     const o = options.orderType ? `&orderBy=${options.orderType}` : '';
     const n = options.name ? `&q=name:${options.name}*` : '';
     const q = options.query ? `&q=${options.query}` : '';
-    const FORMATED_URL = `${environment.apiUrl}cards${ps}${p}${o}${n}${q}`;
-    return this.httpClient.get<PokemonList>(FORMATED_URL);
+    const URL = `${environment.apiUrl}cards${ps}${p}${o}${n}${q}`;
+    return this.httpClient.get<PokemonList>(URL);
   }
 
   getCardDetail(pokemonId: string): Observable<PokemonDetail> {
-    const FORMATED_URL = `${environment.apiUrl}cards/${pokemonId}`;
-    return this.httpClient.get<PokemonDetail>(FORMATED_URL);
+    const URL = `${environment.apiUrl}cards/${pokemonId}`;
+    return this.httpClient.get<PokemonDetail>(URL);
+  }
+
+  getTypes(): Observable<defaultResponse> {
+    const URL = `${environment.apiUrl}types`;
+    return this.httpClient.get<defaultResponse>(URL);
+  }
+
+  getSubTypes(): Observable<defaultResponse> {
+    const URL = `${environment.apiUrl}subtypes`;
+    return this.httpClient.get<defaultResponse>(URL);
+  }
+
+  getSuperTypes(): Observable<defaultResponse> {
+    const URL = `${environment.apiUrl}supertypes`;
+    return this.httpClient.get<defaultResponse>(URL);
+  }
+
+  getRarities(): Observable<defaultResponse> {
+    const URL = `${environment.apiUrl}rarities`;
+    return this.httpClient.get<defaultResponse>(URL);
   }
 }

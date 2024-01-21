@@ -145,3 +145,7 @@ export type cardType =
   | 'Water'
   | ''
   | undefined;
+
+export interface defaultResponse {
+  data: string[];
+}
