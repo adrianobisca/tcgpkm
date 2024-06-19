@@ -14,11 +14,9 @@
   @include desktop {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    max-width: $desktop;
   }
   @include xl-desktop {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    max-width: $xl-desktop;
   }
 }

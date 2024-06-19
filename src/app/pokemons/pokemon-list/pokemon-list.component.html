@@ -1,20 +1,19 @@
-<ng-container *ngIf="pokemons$ | async as pokemons">
-  <ng-container *ngIf="!(loadingStatus$ | async)">
-    <section class="wrapper">
-      <ng-container *ngFor="let pokemon of pokemons">
-        <app-pokemon [data]="pokemon" class="card"></app-pokemon>
-      </ng-container>
-    </section>
-    <mat-paginator
-      *ngIf="pagination$ | async as pagination"
-      [length]="pagination.totalCount"
-      [pageSize]="pagination.pageSize"
-      [pageIndex]="pagination.page - 1"
-      [pageSizeOptions]="[5, 10, 25, 100]"
-      [showFirstLastButtons]="true"
-      (page)="handlePageEvent($event)"
-      aria-label="Select page"
-    >
-    </mat-paginator>
-  </ng-container>
-</ng-container>
+@if (pokemons$ | async; as pokemons) { @if(!(loadingStatus$ | async)){
+<section class="wrapper">
+  @for (pokemon of pokemons; track $index) {
+  <app-pokemon [data]="pokemon" class="card"></app-pokemon>
+  }
+</section>
+
+} } @if (pagination$ | async; as pagination) {
+<mat-paginator
+  [length]="pagination.totalCount"
+  [pageSize]="pagination.pageSize"
+  [pageIndex]="pagination.page - 1"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  [showFirstLastButtons]="true"
+  (page)="handlePageEvent($event)"
+  aria-label="Select page"
+>
+</mat-paginator>
+}

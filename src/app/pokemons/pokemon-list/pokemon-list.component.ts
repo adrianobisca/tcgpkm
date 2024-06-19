@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Select, Store } from '@ngxs/store';
@@ -15,7 +15,7 @@ import { PokemonComponent } from '../pokemon/pokemon.component';
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.scss'],
   standalone: true,
-  imports: [NgIf, NgFor, PokemonComponent, AsyncPipe, MatPaginatorModule],
+  imports: [PokemonComponent, AsyncPipe, MatPaginatorModule],
 })
 export class PokemonListComponent implements OnInit {
   @Select(PokemonState.getCardsList) pokemons$!: Observable<Pokemon[]>;

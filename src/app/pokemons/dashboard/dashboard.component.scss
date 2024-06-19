@@ -1,12 +1,25 @@
 .wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  display: grid;
+  grid-template-areas: "search search" "list list";
+  grid-template-columns: 300px 1fr;
+}
+
+.search-field {
+  grid-area: search;
+  height: 100px;
 
   form {
     display: flex;
     align-items: flex-start;
+    justify-content: center;
     gap: 1rem;
   }
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.list {
+  grid-area: list;
 }

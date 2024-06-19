@@ -1,0 +1,45 @@
+<h2>FILTERS</h2>
+<section [formGroup]="filtersForm">
+  <div [formGroup]="formTypes">
+    <h4>Types</h4>
+    @for (type of cardTypes$ | async; track $index) {
+    <p>
+      <mat-checkbox [formControlName]="type">{{ type }}</mat-checkbox>
+    </p>
+    }@empty{
+    <p>Loading types...</p>
+    }
+  </div>
+  <div [formGroup]="formSubTypes">
+    <h4>Subtypes</h4>
+    @for (subtype of cardSubTypes$ | async; track $index) {
+    <p>
+      <mat-checkbox [formControlName]="subtype">{{ subtype }}</mat-checkbox>
+    </p>
+    }@empty{
+    <p>Loading types...</p>
+    }
+  </div>
+  <div [formGroup]="formSuperTypes">
+    <h4>Supertypes</h4>
+    @for (supertype of cardSuperTypes$ | async; track $index) {
+    <p>
+      <mat-checkbox [formControlName]="supertype">{{ supertype }}</mat-checkbox>
+    </p>
+    }@empty{
+    <p>Loading types...</p>
+    }
+  </div>
+  <div [formGroup]="formRarities">
+    <h4>Rarities</h4>
+    @for (rarity of cardRarities$ | async; track $index) {
+    <p>
+      <mat-checkbox [formControlName]="rarity">{{ rarity }}</mat-checkbox>
+    </p>
+    }@empty{
+    <p>Loading types...</p>
+    }
+  </div>
+</section>
+
+<pre>{{ filtersForm.value | json }}</pre>

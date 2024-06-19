@@ -1,59 +1,69 @@
-<div class="wrapper">
-  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="outline">
-      <mat-label>Type</mat-label>
-      <mat-select formControlName="type">
-        <mat-option [value]="null">None</mat-option>
-        @if (cardTypes$ | async; as types) { @for (type of types; track $index)
-        {
-        <mat-option [value]="type | lowercase">{{ type }}</mat-option>
-        }@empty{
-        <mat-option [value]="'loading'">loading...</mat-option>
-        } }
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>SubType</mat-label>
-      <mat-select formControlName="subtype">
-        <mat-option [value]="null">None</mat-option>
-        @if (cardSubTypes$ | async; as subtypes) { @for (type of subtypes; track
-        $index) {
-        <mat-option [value]="type | lowercase">{{ type }}</mat-option>
-        }@empty{
-        <mat-option [value]="'loading'">loading...</mat-option>
-        } }
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>SuperType</mat-label>
-      <mat-select formControlName="supertype">
-        <mat-option [value]="null">None</mat-option>
-        @if (cardSuperTypes$ | async; as supertypes) { @for (type of supertypes;
-        track $index) {
-        <mat-option [value]="type | lowercase">{{ type }}</mat-option>
-        }@empty{
-        <mat-option [value]="'loading'">loading...</mat-option>
-        } }
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Rarities</mat-label>
-      <mat-select formControlName="rarity">
-        <mat-option [value]="null">None</mat-option>
-        @if (cardRarities$ | async; as rarity) { @for (type of rarity; track
-        $index) {
-        <mat-option [value]="type | lowercase">{{ type }}</mat-option>
-        }@empty{
-        <mat-option [value]="'loading'">loading...</mat-option>
-        } }
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Search for card here</mat-label>
-      <input type="text" formControlName="cardName" id="searchName" matInput />
-    </mat-form-field>
-    <button mat-icon-button color="primary" type="submit">
-      <mat-icon>search</mat-icon>
-    </button>
-  </form>
-</div>
+<section class="wrapper">
+  <div class="search-field">
+    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type" multiple>
+          <mat-option [value]="null">None</mat-option>
+          @if (cardTypes$ | async; as types) { @for (type of types; track
+          $index) {
+          <mat-option [value]="type | lowercase">{{ type }}</mat-option>
+          }@empty{
+          <mat-option [value]="'loading'">loading...</mat-option>
+          } }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>SubType</mat-label>
+        <mat-select formControlName="subtype" multiple>
+          <mat-option [value]="null">None</mat-option>
+          @if (cardSubTypes$ | async; as subtypes) { @for (type of subtypes;
+          track $index) {
+          <mat-option [value]="type | lowercase">{{ type }}</mat-option>
+          }@empty{
+          <mat-option [value]="'loading'">loading...</mat-option>
+          } }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>SuperType</mat-label>
+        <mat-select formControlName="supertype" multiple>
+          <mat-option [value]="null">None</mat-option>
+          @if (cardSuperTypes$ | async; as supertypes) { @for (type of
+          supertypes; track $index) {
+          <mat-option [value]="type | lowercase">{{ type }}</mat-option>
+          }@empty{
+          <mat-option [value]="'loading'">loading...</mat-option>
+          } }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Rarities</mat-label>
+        <mat-select formControlName="rarity" multiple>
+          <mat-option [value]="null">None</mat-option>
+          @if (cardRarities$ | async; as rarity) { @for (type of rarity; track
+          $index) {
+          <mat-option [value]="type | lowercase">{{ type }}</mat-option>
+          }@empty{
+          <mat-option [value]="'loading'">loading...</mat-option>
+          } }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Search for card here</mat-label>
+        <input
+          type="text"
+          formControlName="cardName"
+          id="searchName"
+          matInput
+        />
+      </mat-form-field>
+      <button mat-icon-button color="primary" type="submit">
+        <mat-icon>search</mat-icon>
+      </button>
+    </form>
+  </div>
+
+  <!--   <app-sidebar class="sidebar"></app-sidebar> -->
+  <app-pokemon-list class="list"></app-pokemon-list>
+</section>

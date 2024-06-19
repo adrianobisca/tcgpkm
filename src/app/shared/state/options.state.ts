@@ -31,10 +31,10 @@ interface optionsModel
 @State<optionsModel>({
   name: 'options',
   defaults: {
-    types: [''],
-    subtypes: [''],
-    supertypes: [''],
-    rarities: [''],
+    types: [],
+    subtypes: [],
+    supertypes: [],
+    rarities: [],
   },
 })
 @Injectable()

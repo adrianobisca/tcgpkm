@@ -34,8 +34,8 @@ export class SearchParamsState {
     ctx: StateContext<searchParamsModel>,
     { params }: setSearchParams
   ) {
-    ctx.dispatch(new Navigate(['/pokemon-list']));
-    return ctx.patchState({ params: params });
+    ctx.patchState({ params: params });
+    return ctx.dispatch(new getPokemonList());
   }
 
   @Action(setPaginator)
