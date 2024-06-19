@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,31 +20,24 @@ import { SearchParamsState } from '@shared/state/search-params.state';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { OptionsState } from '@shared/state/options.state';
 
-@NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    InterceptorsModule,
-    FooterComponent,
-    HeaderComponent,
-    LoadingComponent,
-    NgxsModule.forRoot([
-      PokemonState,
-      LoadingState,
-      PokemonDetailState,
-      SearchParamsState,
-      OptionsState,
-    ]),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot(),
-    NgxsRouterPluginModule.forRoot(),
-    BrowserAnimationsModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [AppComponent],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        InterceptorsModule,
+        FooterComponent,
+        HeaderComponent,
+        LoadingComponent,
+        NgxsModule.forRoot([
+            PokemonState,
+            LoadingState,
+            PokemonDetailState,
+            SearchParamsState,
+            OptionsState,
+        ]),
+        NgxsReduxDevtoolsPluginModule.forRoot(),
+        NgxsLoggerPluginModule.forRoot(),
+        NgxsRouterPluginModule.forRoot(),
+        BrowserAnimationsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}

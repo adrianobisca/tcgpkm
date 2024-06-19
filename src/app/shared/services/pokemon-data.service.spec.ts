@@ -1,9 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { PokemonDataService } from './pokemon-data.service';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('PokemonDataService', () => {
   let service: PokemonDataService;
@@ -11,9 +9,9 @@ describe('PokemonDataService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PokemonDataService],
-      imports: [HttpClientTestingModule],
-    });
+    imports: [],
+    providers: [PokemonDataService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
     service = TestBed.inject(PokemonDataService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
