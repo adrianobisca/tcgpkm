@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:stats": "ng build --stats-json",
+    "analyze": "webpack-bundle-analyzer dist/fec/stats.json",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:cov": "ng test --code-coverage"
@@ -25,6 +27,7 @@
     "@ngxs/logger-plugin": "^18.0.0",
     "@ngxs/router-plugin": "^18.0.0",
     "@ngxs/store": "^18.0.0",
+    "@vercel/speed-insights": "^1.0.12",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
@@ -41,6 +44,7 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~5.4.5"
+    "typescript": "~5.4.5",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }
