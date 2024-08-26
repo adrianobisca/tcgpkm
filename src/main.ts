@@ -5,6 +5,7 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
 import { injectSpeedInsights } from '@vercel/speed-insights';
+import { inject } from '@vercel/analytics';
 
 if (environment.production) {
   enableProdMode();
@@ -16,4 +17,5 @@ platformBrowserDynamic()
   .finally(() => {
     console.log('Vercel Speed Insight & Analytics Activated');
     injectSpeedInsights();
+    inject();
   });
